@@ -1,0 +1,2 @@
+Thor,knight,0,50,25,66,Weapon
+Tho,warrior,0,50,25,66,Helm
