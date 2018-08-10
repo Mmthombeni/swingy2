@@ -1,22 +1,27 @@
 package mmthombe.model;
 
-import mmthombe.interfaces.ICharacter;
+import mmthombe.enums.Artifacts;
 
-public class Character implements ICharacter {
+public class Character {
     protected String _name;
-    protected int _level;
     protected int _xp;
     protected int _attack;
     protected int _defence;
-    protected int _artifacts;
+	protected Artifacts _artifact;
+	protected int _hp;
 
-    public Character(String name, int attack, int defence, int hp, String artifacts)
+    public Character(String name, int xp, int attack, int defence, int hp, Artifacts artifact)
     {
-
+		this._name = name;
+		this._xp = xp;
+		this._attack = attack;
+		this._defence = defence;
+		this._hp = hp;
+		this._artifact = artifact;
     }
     
 	public String getName() {
-		return null;
+		return this._name;
 	}
 
 	public int getLevel() {
@@ -24,23 +29,18 @@ public class Character implements ICharacter {
 	}
 
 	public int getXP() {
-		return 0;
+		return this._xp;
 	}
 
 	public int getAttack() {
-		return 0;
+		return this._attack;
 	}
 
 	public int getDefense() {
-		return 0;
+		return this._defence;
 	}
 
 	public int getHP() {
-		return 0;
+		return this._hp;
 	}
-
-	public int getArtifacts() {
-		return 0;
-	}
-    
 }
