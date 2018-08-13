@@ -3,11 +3,19 @@ package mmthombe.utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.List;
+
+import mmthombe.enums.Artifacts;
+import mmthombe.factories.HeroFactory;
+import mmthombe.model.Character;
 
 public class FileHandler{
+    private final static String fileName = "heros.txt";
+
     public static String ReadFile(){
         String str = "";
-        File file = new File("heros.txt");
+        File file = new File(fileName);
         try {
             BufferedReader buff =  new BufferedReader(new FileReader(file));
             String st;
@@ -18,6 +26,27 @@ public class FileHandler{
         } catch (Exception e) {}
         return str; 
     }
-    
+
+    public static boolean WriteToFile(Character new_hero){
+        try {
+            List<Character> heros = HeroFactory.HeroList();
+            PrintWriter writeToFile = new PrintWriter(new File(fileName));
+            String data = "";
+            
+            SwingyIO.ConsoleOutputLine(">>"+ heros.size());
+            for (Character hero : heros) {
+                data += hero.getName() + "," + hero.getClass().getSimpleName().substring(4) + "," + hero.getXP() + "," + hero.getAttack() + "," + hero.getDefense() + "," + hero.getHP() + "," + hero.getArtifact() + "\n";
+            }
+            if (new_hero != null ){
+                data += new_hero.getName() + "," + new_hero.getClass().getSimpleName().substring(4) + "," + new_hero.getXP() + "," + new_hero.getAttack() + "," + new_hero.getDefense() + "," + new_hero.getHP() + "," + new_hero.getArtifact();
+            }
+            SwingyIO.ConsoleOutputLine(data);
+            writeToFile.println(data);
+            writeToFile.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 }

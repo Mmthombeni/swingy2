@@ -43,4 +43,8 @@ public class Character {
 	public int getHP() {
 		return this._hp;
 	}
+
+	public Artifacts getArtifact(){
+		return this._artifact;
+	}
 }

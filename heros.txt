@@ -1,2 +1,2 @@
-Thor,knight,0,50,25,66,Weapon
-Tho,warrior,0,50,25,66,Helm
+ffhr,Godd,0,0,0,0,ARMOR
+dfdfs,Godd,0,0,0,0,HELM
