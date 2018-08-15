@@ -1,2 +1,1 @@
-ffhr,Godd,0,0,0,0,ARMOR
-dfdfs,Godd,0,0,0,0,HELM
+iyvkj,Princess,0,0,0,0,ARMOR

@@ -2,6 +2,7 @@ package mmthombe;
 
 import mmthombe.controllers.console.OptionController;
 import mmthombe.utils.SwingyIO;
+import mmthombe.view.gui.CreateSelectHeroView;
 
 public class App 
 {
@@ -9,12 +10,11 @@ public class App
     {
         if(args.length == 1 ){
             if(args[0].equalsIgnoreCase("console")){
-                OptionController control = new OptionController();
-                control.PickPlayer();
+                new OptionController().PickPlayer();
                 return;
             }
             else if(args[0].equalsIgnoreCase("gui")){
-                SwingyIO.ConsoleOutput("gui mode");
+                new CreateSelectHeroView();
                 return;
             }
         }

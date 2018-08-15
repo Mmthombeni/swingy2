@@ -37,22 +37,28 @@ public class OptionView{
         input = SwingyIO.ConsoleInputInt();
 
         if (input > 0 && input < 6){
-            type = types[input - 1];
+            return HeroFactory.newHero(name, types[input - 1], "0", "0", "0", "0", _artifact);
         }
-        else{
-            SwingyIO.ConsoleOutputLine("Invaild input, please choose from the above list.");
-            return CreateHero();
-        }
-        return HeroFactory.newHero(name, type, "0", "0", "0", "0", _artifact);
+        SwingyIO.ConsoleOutputLine("Invaild input, please choose from the above list.");
+        return CreateHero();
     }
 
-    // public static Character SelectHero(){
-    //     List<Character> character = new ArrayList<Character>();
-    //     character = HeroFactory.HeroList();
+    public static Character SelectHero(List<Character> heros){
+        SwingyIO.ConsoleOutputLine("Selection of hero on list");
+        String data = "";
+        int counter = 1;
+        int heroSelected;
 
-    //     for (Character characters : character) {
-    //         SwingyIO.ConsoleOutput(HeroFactory.getName());
-    //     }
-    //     return HeroFactory.newHero("name", "type", "xp", "attack", "defence", "hp", "artifact");
-    // }
+        for (Character hero : heros) {
+            data = counter + ". " + hero.getName() + ", " + hero.getClass().getSimpleName().substring(4) + ", " + hero.getXP() + ", " + hero.getAttack() + ", " + hero.getDefense() + ", " + hero.getHP() + ", " + hero.getArtifact() + "\n";
+            counter++;
+            SwingyIO.ConsoleOutput(data);
+        }
+        heroSelected = SwingyIO.ConsoleInputInt();
+        if (heroSelected > 0 && heroSelected <= heros.size()){
+            return heros.get(heroSelected - 1);
+        }
+        SwingyIO.ConsoleOutputLine("Invaild input, please choose from the above list.");
+        return SelectHero(heros);
+     }
 }

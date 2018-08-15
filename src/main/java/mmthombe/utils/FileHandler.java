@@ -33,14 +33,12 @@ public class FileHandler{
             PrintWriter writeToFile = new PrintWriter(new File(fileName));
             String data = "";
             
-            SwingyIO.ConsoleOutputLine(">>"+ heros.size());
             for (Character hero : heros) {
                 data += hero.getName() + "," + hero.getClass().getSimpleName().substring(4) + "," + hero.getXP() + "," + hero.getAttack() + "," + hero.getDefense() + "," + hero.getHP() + "," + hero.getArtifact() + "\n";
             }
             if (new_hero != null ){
                 data += new_hero.getName() + "," + new_hero.getClass().getSimpleName().substring(4) + "," + new_hero.getXP() + "," + new_hero.getAttack() + "," + new_hero.getDefense() + "," + new_hero.getHP() + "," + new_hero.getArtifact();
             }
-            SwingyIO.ConsoleOutputLine(data);
             writeToFile.println(data);
             writeToFile.close();
             return true;
