@@ -1,6 +1,7 @@
 package mmthombe;
 
 import mmthombe.controllers.console.OptionController;
+import mmthombe.controllers.gui.CreateSelectHeroController;
 import mmthombe.utils.SwingyIO;
 import mmthombe.view.gui.CreateSelectHeroView;
 
@@ -14,7 +15,7 @@ public class App
                 return;
             }
             else if(args[0].equalsIgnoreCase("gui")){
-                new CreateSelectHeroView();
+                new CreateSelectHeroController(new CreateSelectHeroView());
                 return;
             }
         }
