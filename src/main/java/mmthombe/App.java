@@ -15,6 +15,7 @@ public class App
                 return;
             }
             else if(args[0].equalsIgnoreCase("gui")){
+                SwingyIO.ConsoleOutputLine("Running on GUI");
                 new CreateSelectHeroController(new CreateSelectHeroView());
                 return;
             }

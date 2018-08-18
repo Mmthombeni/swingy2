@@ -1,11 +1,8 @@
 package mmthombe.view.gui;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import mmthombe.utils.SwingyIO;
 
 public class CreateSelectHeroView extends JFrame{
 	private JButton createButton = new JButton("Create new hero"); 
@@ -14,19 +11,19 @@ public class CreateSelectHeroView extends JFrame{
     public CreateSelectHeroView(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(300, 300);
+        this.setTitle("Choose or create a player:");
 
         JPanel selectioPanel = new JPanel();
-        selectioPanel.add(createButton);
-        selectioPanel.add(selectButton);
+        selectioPanel.add(this.createButton);
+        selectioPanel.add(this.selectButton);
         this.add(selectioPanel);
     }
 
     public void createButtonListner(ActionListener buttonCreate){
-        createButton.addActionListener(buttonCreate);
+        this.createButton.addActionListener(buttonCreate);
     }
 
     public void selectButtonListner(ActionListener buttonSelect){
-        selectButton.addActionListener(buttonSelect);
+        this.selectButton.addActionListener(buttonSelect);
     }
-
 }

@@ -1,1 +1,4 @@
 iyvkj,Princess,0,0,0,0,ARMOR
+lele,Godd,0,0,0,0,HELM
+Sam,Warrior,0,0,0,0,WEAPON
+tom,Knight,0,0,0,0,WEAPON

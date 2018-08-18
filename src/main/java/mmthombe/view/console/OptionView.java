@@ -7,6 +7,7 @@ import java.util.Random;
 import mmthombe.enums.Artifacts;
 import mmthombe.factories.HeroFactory;
 import mmthombe.model.Character;
+import mmthombe.model.CreateHeroModel;
 import mmthombe.utils.*;
 
 public class OptionView{
@@ -18,13 +19,10 @@ public class OptionView{
     }
 
     public static Character CreateHero(){
-        String type = "";
         int input;
         String name;
         String types[] = {"Doll", "Godd", "Knight", "Princess", "Warrior"};
-        String[] artifact = {"WEAPON", "ARMOR", "HELM"};
-        Random random = new Random();
-        String _artifact = artifact[random.nextInt(artifact.length)];
+        CreateHeroModel newHero = new CreateHeroModel();
 
         SwingyIO.ConsoleOutput("Enter Hero name: ");
         name = SwingyIO.ConsoleInput().trim();
@@ -37,7 +35,9 @@ public class OptionView{
         input = SwingyIO.ConsoleInputInt();
 
         if (input > 0 && input < 6){
-            return HeroFactory.newHero(name, types[input - 1], "0", "0", "0", "0", _artifact);
+            newHero.setHeroName(name);
+            newHero.setHeroType(types[input-1]);
+            return newHero.getHero();
         }
         SwingyIO.ConsoleOutputLine("Invaild input, please choose from the above list.");
         return CreateHero();

@@ -2,6 +2,8 @@ package mmthombe.utils;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class SwingyIO {
     public static void ConsoleOutputLine(String msg){
         ConsoleOutput(msg + "\n");
@@ -26,5 +28,9 @@ public class SwingyIO {
         String userInput = reader.nextLine();
         //reader.close();
         return userInput;
+    }
+
+    public static void GUIOutput(String message){
+        JOptionPane.showMessageDialog(null, message);
     }
 }
