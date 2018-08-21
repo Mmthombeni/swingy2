@@ -1,14 +1,18 @@
 package mmthombe.model;
 
+import java.util.logging.Level;
+
 import mmthombe.enums.Artifacts;
+import mmthombe.utils.Formulas;
 
 public class Character {
-    protected String _name;
-    protected int _xp;
-    protected int _attack;
-    protected int _defence;
-	protected Artifacts _artifact;
-	protected int _hp;
+    private String _name;
+    private int _xp;
+    private int _attack;
+    private int _defence;
+	private Artifacts _artifact;
+	private int _hp;
+	private Coordinates _coordinates;
 
     public Character(String name, int xp, int attack, int defence, int hp, Artifacts artifact)
     {
@@ -18,14 +22,14 @@ public class Character {
 		this._defence = defence;
 		this._hp = hp;
 		this._artifact = artifact;
-    }
+	}
     
 	public String getName() {
 		return this._name;
 	}
 
 	public int getLevel() {
-		return 0;
+		return Formulas.GetLevel(this._xp);
 	}
 
 	public int getXP() {
@@ -46,5 +50,13 @@ public class Character {
 
 	public Artifacts getArtifact(){
 		return this._artifact;
+	}
+
+	public void setCoordinates(Coordinates coordinates){
+		this._coordinates = coordinates;
+	}
+
+	public Coordinates getCoodrinates(){
+		return this._coordinates;
 	}
 }

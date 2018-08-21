@@ -6,6 +6,7 @@ import mmthombe.factories.HeroFactory;
 import mmthombe.model.*;
 import mmthombe.model.Character;
 import mmthombe.utils.*;
+import mmthombe.view.console.GameView;
 import mmthombe.view.console.OptionView;
 
 public class OptionController{
@@ -33,16 +34,15 @@ public class OptionController{
     }
 
     public void SelectHero(){
-        List<Character> heros = HeroFactory.HeroList();
-        Character hero = null;
+        SelectHeroModel heroModel = new SelectHeroModel();
 
-        if (heros == null || heros.size() == 0){
+        if (heroModel.getHeroList().size() == 0){
             SwingyIO.ConsoleOutputLine("No Heros to select from, please create a hero");
             this.PickPlayer();
         }
         else{
-            hero = OptionView.SelectHero(heros);
-            SwingyIO.ConsoleOutputLine(hero.getName());
+            Character hero = OptionView.SelectHero(heroModel);
+            new GameController(new GameView(), new GameModel(hero));
         }
     }
 }

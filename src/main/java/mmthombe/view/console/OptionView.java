@@ -8,6 +8,7 @@ import mmthombe.enums.Artifacts;
 import mmthombe.factories.HeroFactory;
 import mmthombe.model.Character;
 import mmthombe.model.CreateHeroModel;
+import mmthombe.model.SelectHeroModel;
 import mmthombe.utils.*;
 
 public class OptionView{
@@ -43,22 +44,21 @@ public class OptionView{
         return CreateHero();
     }
 
-    public static Character SelectHero(List<Character> heros){
+    public static Character SelectHero(SelectHeroModel model){
         SwingyIO.ConsoleOutputLine("Selection of hero on list");
         String data = "";
-        int counter = 1;
-        int heroSelected;
+        Character hero;
 
-        for (Character hero : heros) {
-            data = counter + ". " + hero.getName() + ", " + hero.getClass().getSimpleName().substring(4) + ", " + hero.getXP() + ", " + hero.getAttack() + ", " + hero.getDefense() + ", " + hero.getHP() + ", " + hero.getArtifact() + "\n";
-            counter++;
-            SwingyIO.ConsoleOutput(data);
+        for (int i = 0; i < model.getHeros().length; i++){
+            data += (i + 1) + ". " + model.getHeros()[i] + "\n";
         }
-        heroSelected = SwingyIO.ConsoleInputInt();
-        if (heroSelected > 0 && heroSelected <= heros.size()){
-            return heros.get(heroSelected - 1);
+        SwingyIO.ConsoleOutputLine(data);
+
+        hero = model.getSelectedHero(SwingyIO.ConsoleInputInt() - 1);
+        if (hero != null){
+            return hero;
         }
         SwingyIO.ConsoleOutputLine("Invaild input, please choose from the above list.");
-        return SelectHero(heros);
+        return SelectHero(model);
      }
 }

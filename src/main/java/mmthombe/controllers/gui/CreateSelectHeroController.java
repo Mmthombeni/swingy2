@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import mmthombe.model.CreateHeroModel;
+import mmthombe.model.SelectHeroModel;
 import mmthombe.view.gui.CreateHeroView;
 import mmthombe.view.gui.CreateSelectHeroView;
 import mmthombe.view.gui.SelectHeroView;
@@ -27,7 +28,8 @@ public class CreateSelectHeroController{
 
   class SelectButtonListner implements ActionListener{
     public void actionPerformed(ActionEvent e) {
-      new SelectHeroController(new SelectHeroView());
+      SelectHeroModel heroModel = new SelectHeroModel();
+      new SelectHeroController(new SelectHeroView(heroModel.getHeros()), heroModel);
       _view.dispose();
     }
   }
