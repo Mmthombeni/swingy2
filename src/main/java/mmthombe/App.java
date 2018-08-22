@@ -13,19 +13,19 @@ public class App
 {
     public static void main( String[] args )
     {
-        new GameController(new GameView(), new GameModel(HeroFactory.HeroList().get(0)));
+        // new GameController(new GameView(), new GameModel(HeroFactory.HeroList().get(0)));
 
-        // if(args.length == 1 ){
-        //     if(args[0].equalsIgnoreCase("console")){
-        //         new OptionController().PickPlayer();
-        //         return;
-        //     }
-        //     else if(args[0].equalsIgnoreCase("gui")){
-        //         SwingyIO.ConsoleOutputLine("Running on GUI");
-        //         new CreateSelectHeroController(new CreateSelectHeroView());
-        //         return;
-        //     }
-        // }
-        // SwingyIO.ConsoleOutput("Invaild argument, argument should be either console or gui");
+        if(args.length == 1 ){
+            if(args[0].equalsIgnoreCase("console")){
+                new OptionController().PickPlayer();
+                return;
+            }
+            else if(args[0].equalsIgnoreCase("gui")){
+                SwingyIO.ConsoleOutputLine("Running on GUI");
+                new CreateSelectHeroController(new CreateSelectHeroView());
+                return;
+            }
+        }
+        SwingyIO.ConsoleOutput("Invaild argument, argument should be either console or gui");
     }
 }

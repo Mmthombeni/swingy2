@@ -36,6 +36,10 @@ public class Character {
 		return this._xp;
 	}
 
+	public void setXP(int xp){
+		this._xp = xp;
+	}
+
 	public int getAttack() {
 		return this._attack;
 	}
@@ -46,6 +50,10 @@ public class Character {
 
 	public int getHP() {
 		return this._hp;
+	}
+
+	public void setHP(int HP){
+		this._hp = HP;
 	}
 
 	public Artifacts getArtifact(){
