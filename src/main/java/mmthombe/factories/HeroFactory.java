@@ -22,8 +22,9 @@ public class HeroFactory{
             if (name == null || name.length() == 0){
                 return null;
             }
+            //if artifacts increase
             if(type.equalsIgnoreCase("knight")){
-            return new HeroKnight(name, _xp, _attack, _defence, _hp, _artifact);
+                return new HeroKnight(name, _xp, _attack, _defence, _hp, _artifact);
             }
             else if(type.equalsIgnoreCase("warrior")){
                 return new HeroWarrior(name, _xp, _attack, _defence, _hp, _artifact);

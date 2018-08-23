@@ -47,4 +47,15 @@ public class FileHandler{
         }
     }
 
+    public static boolean updateHero(String data) {
+        try {
+            PrintWriter writeToFile = new PrintWriter(new File(fileName));
+            writeToFile.println(data);
+            writeToFile.close();
+            return (true);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

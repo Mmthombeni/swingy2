@@ -1,7 +1,7 @@
 package mmthombe.controllers.console;
 
 import mmthombe.model.GameModel;
-import mmthombe.utils.SwingyIO;
+import mmthombe.utils.*;
 import mmthombe.view.console.GameView;
 
 public class GameController{
@@ -20,13 +20,17 @@ public class GameController{
             SwingyIO.ConsoleOutput("\n" + this._model.getHero().getName() + "-  " + this._model.getHero().getHP() + "HP\n\n" );
             SwingyIO.ConsoleOutputLine(this._model.getMap());
             this.playerMovement();
-
-            this._model.getHero().setHP(this._model.getHero().getHP() - 2);
+            // if (the hp is lower after the fight is won){
+            //this._model.getHero().setHP(this._model.getHero().getHP() - 2);
+            // }
+            
         }
 
         if (this._model.isHeroWithinMap() == false){
             this._model.heroWonGame();
-            //write to file
+            SwingyIO.ConsoleOutputLine("Game Over!! You WIN!!");
+        }else{
+            SwingyIO.ConsoleOutputLine("Game Over!! You LOST!!");
         }
         new OptionController().PickPlayer();
     }

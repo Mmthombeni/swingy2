@@ -1,7 +1,5 @@
 package mmthombe.model;
 
-import java.util.logging.Level;
-
 import mmthombe.enums.Artifacts;
 import mmthombe.utils.Formulas;
 

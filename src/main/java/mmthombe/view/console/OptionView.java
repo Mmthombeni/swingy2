@@ -14,7 +14,8 @@ import mmthombe.utils.*;
 public class OptionView{
     public static int PickPlayer(){
         SwingyIO.ConsoleOutputLine("1. Create a hero.");
-        SwingyIO.ConsoleOutputLine("2. Select a hero.");  
+        SwingyIO.ConsoleOutputLine("2. Select a hero.");
+        SwingyIO.ConsoleOutputLine("3. Quit game.");  
 
         return SwingyIO.ConsoleInputInt();
     }
@@ -22,6 +23,7 @@ public class OptionView{
     public static Character CreateHero(){
         int input;
         String name;
+        //back button
         String types[] = {"Doll", "Godd", "Knight", "Princess", "Warrior"};
         CreateHeroModel newHero = new CreateHeroModel();
 
@@ -31,7 +33,13 @@ public class OptionView{
             SwingyIO.ConsoleOutputLine("Name can not be empty.");
             return CreateHero();
         }
-        SwingyIO.ConsoleOutputLine("Pick Hero Type: 1. Doll, 2. Godd, 3. Knight, 4. Princess, 5. Warrior ");
+        
+        SwingyIO.ConsoleOutputLine("Pick Hero Type: ");
+        SwingyIO.ConsoleOutputLine("1. Doll");
+        SwingyIO.ConsoleOutputLine("2. Godd");
+        SwingyIO.ConsoleOutputLine("3. Knight");
+        SwingyIO.ConsoleOutputLine("4. Princess");
+        SwingyIO.ConsoleOutputLine("5. Warrior");
         
         input = SwingyIO.ConsoleInputInt();
 
@@ -46,6 +54,7 @@ public class OptionView{
 
     public static Character SelectHero(SelectHeroModel model){
         SwingyIO.ConsoleOutputLine("Selection of hero on list");
+        //back option
         String data = "";
         Character hero;
 

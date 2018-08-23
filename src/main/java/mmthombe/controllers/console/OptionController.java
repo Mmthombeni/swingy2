@@ -21,6 +21,9 @@ public class OptionController{
             SwingyIO.ConsoleOutputLine("hero to select.");
             this.SelectHero();
         }
+        else if (selection == 3){
+            return;
+        }
         else{
             SwingyIO.ConsoleOutputLine("Invaild input please select between 1 and 2");
             this.PickPlayer();

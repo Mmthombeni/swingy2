@@ -21,6 +21,6 @@ public class CreateHeroModel{
         Random random = new Random();
         String artifact = artifacts[random.nextInt(artifacts.length)];
 
-        return HeroFactory.newHero(this._heroName, this._heroType, "0", "0", "0", "0", artifact);
+        return HeroFactory.newHero(this._heroName, this._heroType, "0", "402", "160", "5000", artifact);
     }
 }
