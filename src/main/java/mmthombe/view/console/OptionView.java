@@ -1,11 +1,5 @@
 package mmthombe.view.console;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import mmthombe.enums.Artifacts;
-import mmthombe.factories.HeroFactory;
 import mmthombe.model.Character;
 import mmthombe.model.CreateHeroModel;
 import mmthombe.model.SelectHeroModel;

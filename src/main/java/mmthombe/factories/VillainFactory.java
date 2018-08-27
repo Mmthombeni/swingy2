@@ -8,29 +8,44 @@ import mmthombe.enums.Artifacts;
 import mmthombe.model.Character;
 import mmthombe.model.Coordinates;
 import mmthombe.model.Villain;
-import mmthombe.utils.Formulas;
 
 public class VillainFactory{
+    private static int id;
+    private static Random random = new Random();
+
     private static Villain newVillain(Character hero){
-        Random random = new Random();
         int attack = ((hero.getAttack()/2) + random.nextInt(hero.getAttack()));
         int defense = ((hero.getDefense()/2) + random.nextInt(hero.getDefense()));
         int hp = ((hero.getHP()/2) + random.nextInt(hero.getHP()));
-        int map_size = Formulas.GetMapSize(hero.getLevel());
-        Coordinates coords = new Coordinates(random.nextInt(map_size), random.nextInt(map_size));
-        Villain villain = new Villain("Kaygo", 0, attack, defense, hp, Artifacts.ARMOR);
-        villain.setCoordinates(coords);
-        
-        return villain;
+
+        return new Villain("Kaygo" + (++id), 0, attack, defense, hp, Artifacts.ARMOR);
     }
 
-    public static List<Villain> villainList(Character hero){
+    public static List<Villain> villainList(Character hero, int map_size){
         List<Villain> villains = new ArrayList<Villain>();
-        int numberOfVillians = ((hero.getLevel() * 2) + 5);
+        int numberOfVillians = (((hero.getLevel() + 1) * 5) + 5);
+        Coordinates centreCoordinates = new Coordinates(map_size/2, map_size /2);
 
         for (int i = 0; i < numberOfVillians; i++){
-            villains.add(newVillain(hero));
+            Villain villain = newVillain(hero);
+            Coordinates coords = new Coordinates(random.nextInt(map_size), random.nextInt(map_size));
+            villain.setCoordinates(coords); 
+
+            if (!isSamePosition(villains, villain) && !coords.equals(centreCoordinates))
+                villains.add(villain);
+            else{
+                i--;
+            }
         }
         return villains;
+    }
+
+    private static Boolean isSamePosition(List<Villain> villainList, Villain villain){
+        for (Villain e : villainList) {
+            if (villain.getCoodrinates().equals(e.getCoodrinates())){
+                return (true);
+            }
+        }
+        return (false);
     }
 }
