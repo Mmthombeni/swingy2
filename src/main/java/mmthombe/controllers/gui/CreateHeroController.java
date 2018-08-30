@@ -3,8 +3,6 @@ package mmthombe.controllers.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import mmthombe.model.CreateHeroModel;
 import mmthombe.utils.FileHandler;
 import mmthombe.utils.SwingyIO;

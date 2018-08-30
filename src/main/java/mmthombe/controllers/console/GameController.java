@@ -71,8 +71,13 @@ public class GameController{
             if (this._model.getHero().getHP() > 0){
                 this._model.heroWonFight();
                 SwingyIO.ConsoleOutputLine("You won the fight!");
-                SwingyIO.ConsoleOutputLine(this._model.getVillain() + " died and droped " + this._model.getVillain().getArtifact() + " would you like pick it up?");
-
+                //SwingyIO.ConsoleOutputLine(this._model.getVillain() + " died and droped " + this._model.getVillain().getArtifact() + " would you like pick it up?");
+                
+                if (this._view.artifactDrop() == true){
+                    if (this._view.takeArtifact() == 1){
+                        this._model.getHero().setArtifact(this._model.getVillain().getArtifact());
+                    }
+                }
             }
             else{
                 SwingyIO.ConsoleOutputLine("You lost the fight!");

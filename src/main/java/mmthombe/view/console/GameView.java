@@ -29,24 +29,22 @@ public class GameView{
         }
     }
 
-    public static boolean artifactDrop(){
+    public boolean artifactDrop(){
         return (new Random().nextBoolean());  
     }
 
-    public static int takeArtifact(){
-        if (artifactDrop() == true){
-            SwingyIO.ConsoleOutputLine("villian droped the following artifact, would you like to take it");
-            SwingyIO.ConsoleOutputLine("1. Take artifact");
-            SwingyIO.ConsoleOutputLine("2. Leave artifact");
+    public int takeArtifact(){
+        SwingyIO.ConsoleOutputLine("villian droped the following artifact, would you like to take it");
+        SwingyIO.ConsoleOutputLine("1. Take artifact");
+        SwingyIO.ConsoleOutputLine("2. Leave artifact");
 
-            int input = SwingyIO.ConsoleInputInt();
-            if (input == 1 || input == 2){
-                return input;
-            }
-            else{
-                SwingyIO.ConsoleOutputLine("Invalid input please select 1 or 2");
-                return takeArtifact();
-            }
+        int input = SwingyIO.ConsoleInputInt();
+        if (input == 1 || input == 2){
+            return input;
+        }
+        else{
+            SwingyIO.ConsoleOutputLine("Invalid input please select 1 or 2");
+            return takeArtifact();
         }
     }
 }

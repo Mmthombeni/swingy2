@@ -65,4 +65,8 @@ public class Character {
 	public Coordinates getCoodrinates(){
 		return this._coordinates;
 	}
+
+	public void setArtifact(Artifacts artifact){
+		this._artifact = artifact;
+	}
 }

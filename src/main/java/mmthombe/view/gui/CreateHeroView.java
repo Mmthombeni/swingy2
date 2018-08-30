@@ -8,11 +8,11 @@ import javax.swing.*;
 
 public class CreateHeroView extends JFrame{
     private String[] type = {"Doll", "Godd", "Knight", "Princess", "Warrior"};
+    private JLabel typeLabel = new JLabel();
     private JLabel heroNameLabel = new JLabel();
     private JTextField heroText = new JTextField(10);
-    private JLabel typeLabel = new JLabel();
-    private JButton submitButton = new JButton("Submit");
     private JButton backButton = new JButton("Back");
+    private JButton submitButton = new JButton("Submit");
     private JComboBox<String> heroTypeComBox = new JComboBox<String>(type);
 
     public CreateHeroView(){

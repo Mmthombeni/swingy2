@@ -63,7 +63,7 @@ public class GameModel{
                     this._map += "H ";
                 }
                 else {
-                    this._map += ". ";
+                    this._map += "* ";
                 }
             }
             this._map += "\n";
