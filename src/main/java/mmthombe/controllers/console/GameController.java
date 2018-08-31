@@ -30,12 +30,12 @@ public class GameController{
 
                 if (heroChoice == 1){
                     if (this._model.run() == true){
-                        SwingyIO.ConsoleOutputLine("You lucky thing, will get you next time");
+                        SwingyIO.ConsoleOutputLine(Messages.RUN_MESSAGE);
                         SwingyIO.ConsoleOutputLine(Messages.CONTINUE_MESSAGE);
                         SwingyIO.ConsoleInput();
                         this._model.doRun();
                     }else{
-                        SwingyIO.ConsoleOutputLine("Unfortunaley you are forced to face your enemy and fight");
+                        SwingyIO.ConsoleOutputLine(Messages.FORCE_FIGHT_MSG);
                         SwingyIO.ConsoleOutputLine(Messages.CONTINUE_MESSAGE);
                         SwingyIO.ConsoleInput();
                         this.fight();
@@ -53,9 +53,9 @@ public class GameController{
 
         if (this._model.isHeroWithinMap() == false){
             this._model.heroWonGame();
-            SwingyIO.ConsoleOutputLine("Game Over!! You WIN!!");
+            SwingyIO.ConsoleOutputLine(Messages.GAME_OVER_WON);
         }else{
-            SwingyIO.ConsoleOutputLine("Game Over!! You LOST!!");
+            SwingyIO.ConsoleOutputLine(Messages.GAME_OVER_LOST);
         }
         SwingyIO.ConsoleInput();
         new OptionController().PickPlayer();
@@ -70,8 +70,7 @@ public class GameController{
             }
             if (this._model.getHero().getHP() > 0){
                 this._model.heroWonFight();
-                SwingyIO.ConsoleOutputLine("You won the fight!");
-                //SwingyIO.ConsoleOutputLine(this._model.getVillain() + " died and droped " + this._model.getVillain().getArtifact() + " would you like pick it up?");
+                SwingyIO.ConsoleOutputLine(Messages.FIGHT_WON);
                 
                 if (this._view.artifactDrop() == true){
                     if (this._view.takeArtifact() == 1){
@@ -80,7 +79,7 @@ public class GameController{
                 }
             }
             else{
-                SwingyIO.ConsoleOutputLine("You lost the fight!");
+                SwingyIO.ConsoleOutputLine(Messages.FIGHT_LOST);
             }
             SwingyIO.ConsoleOutputLine(Messages.CONTINUE_MESSAGE);
             SwingyIO.ConsoleInput();

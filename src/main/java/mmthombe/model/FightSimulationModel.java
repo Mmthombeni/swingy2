@@ -7,10 +7,12 @@ public class FightSimulationModel{
     private Villain _villain;
     private String _simulationText;
     private int _simulations = 0;
+    private boolean _isSleep;
 
-    public FightSimulationModel(Character hero, Villain villain){
+    public FightSimulationModel(Character hero, Villain villain, boolean isSleep){
         this._hero = hero;
         this._villain = villain;
+        this._isSleep = isSleep;
     }
 
     public boolean nextFight() throws InterruptedException{
@@ -31,8 +33,9 @@ public class FightSimulationModel{
             attack = (attacker.getAttack() - defender.getDefense());
             defender.setHP(defender.getHP() - attack);
             this._simulations++;
-            Thread.sleep(500);
             this._simulationText = attacker.getName() + " is attacking " + defender.getName() + " with an attack of " + attack;
+            if (this._isSleep == true)
+                Thread.sleep(500);
             return true;
         }
         return false;
