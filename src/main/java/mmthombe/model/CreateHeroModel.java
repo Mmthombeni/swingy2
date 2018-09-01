@@ -2,6 +2,7 @@ package mmthombe.model;
 
 import java.util.Random;
 
+import mmthombe.enums.Artifacts;
 import mmthombe.factories.HeroFactory;
 
 public class CreateHeroModel{
@@ -17,10 +18,14 @@ public class CreateHeroModel{
     }
 
     public Character getHero(){
+       return HeroFactory.newHero(this._heroName, this._heroType, "0", "402", "160", "5000", getRandomArtifact().toString());
+    }
+
+    public static Artifacts getRandomArtifact(){
         String[] artifacts = {"WEAPON", "ARMOR", "HELM"};
         Random random = new Random();
         String artifact = artifacts[random.nextInt(artifacts.length)];
-
-        return HeroFactory.newHero(this._heroName, this._heroType, "0", "402", "160", "5000", artifact);
+        
+        return Artifacts.valueOf(artifact.toUpperCase());
     }
 }

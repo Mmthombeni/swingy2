@@ -8,4 +8,10 @@ public class Messages{
     public static final String FIGHT_LOST = "You lost the fight!";
     public static final String GAME_OVER_WON = "Game Over!! You WIN!!";
     public static final String GAME_OVER_LOST = "Game Over!! You LOST!!";
+    public static final String VILLIAN_ENCOUNTER = "You have encounted a villian would you like to run(Yes) or fight(No)? Villian has attack of ";
+    public static final String INVALID_INPUT = "Please pick the correct input.";
+
+    public static String ArtifactMsg(String artifact){
+        return "villian droped " + artifact + ", would you like to take it or leave it?";
+    }
 }

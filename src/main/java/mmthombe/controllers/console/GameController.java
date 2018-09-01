@@ -19,14 +19,14 @@ public class GameController{
 
     private void startGame(){
         while(this._model.isHeroWithinMap() && this._model.isHeroAlive()){
-            SwingyIO.ConsoleOutput(this._model.getHero().getName() + "-  " + this._model.getHero().getHP() + "HP\n\n" );
-            SwingyIO.ConsoleOutput("\n" + this._model.getHero().getCoodrinates().getX() + "-  " + this._model.getHero().getCoodrinates().getY() + "\n\n" );
+            SwingyIO.ConsoleOutput(this._model.getHero().getName() + " - " + this._model.getHero().getAttack() + "attack " + this._model.getHero().getDefense() + "defence " + this._model.getHero().getHP() + "HP\n\n" );
+            SwingyIO.ConsoleOutput("\n" + this._model.getHero().getCoodrinates().getX() + "x, " + this._model.getHero().getCoodrinates().getY() + "y" + "\n\n" );
             this._model.drawMap();
             SwingyIO.ConsoleOutputLine(this._model.getMap());
             
 
             if (this._model.getMatchPostion()){
-                int heroChoice = this._view.heroColliedVillian();
+                int heroChoice = this._view.heroColliedVillian(this._model.getVillain());
 
                 if (heroChoice == 1){
                     if (this._model.run() == true){
@@ -62,7 +62,7 @@ public class GameController{
     }
 
     private void fight(){
-        FightSimulationModel fightSM = new FightSimulationModel(this._model.getHero(), this._model.getVillain());
+        FightSimulationModel fightSM = new FightSimulationModel(this._model.getHero(), this._model.getVillain(), true);
 
         try {
             while (fightSM.nextFight() == true){
@@ -73,7 +73,7 @@ public class GameController{
                 SwingyIO.ConsoleOutputLine(Messages.FIGHT_WON);
                 
                 if (this._view.artifactDrop() == true){
-                    if (this._view.takeArtifact() == 1){
+                    if (this._view.takeArtifact(this._model.getVillain().getArtifact()) == 1){
                         this._model.getHero().setArtifact(this._model.getVillain().getArtifact());
                     }
                 }
@@ -102,7 +102,7 @@ public class GameController{
             this._model.moveEast();
         }
         else {
-            SwingyIO.ConsoleOutputLine("Please pick the correct input.");
+            SwingyIO.ConsoleOutputLine(Messages.INVALID_INPUT);
         }
     }
 }

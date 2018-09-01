@@ -1,8 +1,6 @@
 package mmthombe.controllers.console;
 
-import java.util.List;
-
-import mmthombe.factories.HeroFactory;
+import mmthombe.messages.Messages;
 import mmthombe.model.*;
 import mmthombe.model.Character;
 import mmthombe.utils.*;
@@ -25,7 +23,7 @@ public class OptionController{
             return;
         }
         else{
-            SwingyIO.ConsoleOutputLine("Invaild input please select between 1 and 2");
+            SwingyIO.ConsoleOutputLine(Messages.INVALID_INPUT + " select between 1 and 2");
             this.PickPlayer();
         }
     }

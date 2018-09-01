@@ -10,7 +10,7 @@ public class CreateSelectHeroView extends JFrame{
     
     public CreateSelectHeroView(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 300);
+        this.setSize(250, 90);
         this.setTitle("Choose or create a player:");
 
         JPanel selectioPanel = new JPanel();

@@ -30,15 +30,19 @@ public class FightSimulationModel{
                 defender = this._hero;
             }
             
-            attack = (attacker.getAttack() - defender.getDefense());
-            defender.setHP(defender.getHP() - attack);
+            attack = isAttackPositive(attacker.getAttack() - defender.getDefense());
             this._simulations++;
-            this._simulationText = attacker.getName() + " is attacking " + defender.getName() + " with an attack of " + attack;
+            this._simulationText = attacker.getName() + " " + attacker.getHP() + "HP is attacking " + defender.getName() + " " + defender.getHP() + "HP with an attack of " + attack;
+            defender.setHP(defender.getHP() - attack);
             if (this._isSleep == true)
                 Thread.sleep(500);
             return true;
         }
         return false;
+    }
+
+    private int isAttackPositive(int attack){
+       return (attack < 0 ? 0 : attack); 
     }
 
     public boolean randomBoolean(){

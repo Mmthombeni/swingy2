@@ -1,7 +1,6 @@
 package mmthombe.view.gui;
 
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -17,7 +16,7 @@ public class CreateHeroView extends JFrame{
 
     public CreateHeroView(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 300);
+        this.setSize(300, 170);
         this.setTitle("Create a hero");
 
         heroNameLabel.setText("Enter Hero Name: ");

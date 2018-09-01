@@ -3,6 +3,8 @@ package mmthombe.model;
 import java.util.List;
 import java.util.Random;
 
+import mmthombe.config.Config;
+import mmthombe.enums.DisplayMode;
 import mmthombe.factories.VillainFactory;
 import mmthombe.utils.FileHandler;
 import mmthombe.utils.Formulas;
@@ -31,7 +33,13 @@ public class GameModel{
         boolean villainPostion;
         this._matchPostion = false;
         Coordinates loopCoords = new Coordinates();
+        String spot = "";
 
+        if (Config.DISPLAY_MODE == DisplayMode.CONSOLE){
+            spot += ". ";
+        }else{
+            spot += "* ";
+        }
         for (int y = 0; y < this._map_size; y++){
             for (int x = 0; x < this._map_size; x++){
                 loopCoords.setY(y);
@@ -57,13 +65,17 @@ public class GameModel{
                     this._matchPostion = true;
                 }
                 else if (villainPostion == true){
-                    this._map += "V ";
+                    if (Config.IS_DEVELOPMENT == true){ 
+                        this._map += "V ";
+                    }else {
+                        this._map += spot;
+                    }
                 }
                 else if (heroPostion == true){
                     this._map += "H ";
                 }
                 else {
-                    this._map += "* ";
+                    this._map += spot;
                 }
             }
             this._map += "\n";

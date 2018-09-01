@@ -1,5 +1,7 @@
 package mmthombe.controllers.gui;
 
+import java.util.Random;
+
 import mmthombe.messages.Messages;
 import mmthombe.model.FightSimulationModel;
 import mmthombe.model.GameModel;
@@ -14,7 +16,7 @@ public class FightSimulationController{
     public FightSimulationController(GameView view, GameModel model){
         this._view = view;
         this._model = model;
-        this._fightSimulationModel = new FightSimulationModel(this._model.getHero(), this._model.getVillain(), false);
+        this._fightSimulationModel = new FightSimulationModel(this._model.getHero(), this._model.getVillain(), true);
         this._view.setVisible(true);
 
         new WhileFightSimulation().start();
@@ -23,23 +25,28 @@ public class FightSimulationController{
     private class WhileFightSimulation extends Thread {
         public void run(){
             try {
+                String simulationText = "";
+                
                 while (_fightSimulationModel.nextFight() == true){
-                    _view.setGameText(_fightSimulationModel.getSimulations() + " " + _fightSimulationModel.getSimulationText());
+                    simulationText += _fightSimulationModel.getSimulations() + " " + _fightSimulationModel.getSimulationText() + "\n";
+                    _view.setTitle(_model.getHero().getName() + " " + _model.getHero().getHP() + "HP vs " + _model.getVillain().getName() + " " + _model.getVillain().getHP() + "HP" );
+                    _view.setGameText(simulationText);
                 }
                 if (_model.getHero().getHP() > 0){
                     _model.heroWonFight();
                     SwingyIO.GUIOutput(Messages.FIGHT_WON);
-                    //SwingyIO.ConsoleOutputLine(this._model.getVillain() + " died and droped " + this._model.getVillain().getArtifact() + " would you like pick it up?");
                     
-                    // if (this._view.artifactDrop() == true){
-                    //     if (this._view.takeArtifact() == 1){
-                    //         this._model.getHero().setArtifact(this._model.getVillain().getArtifact());
-                    //     }
-                    // }
+                    if ((new Random().nextBoolean()) == true){
+                        if (SwingyIO.GUIConfirm(Messages.ArtifactMsg(_model.getVillain().getArtifact().toString()))  == true){
+                            _model.getHero().setArtifact(_model.getVillain().getArtifact());
+                        }
+                    }
                 }
                 else{
                     SwingyIO.GUIOutput(Messages.FIGHT_LOST);
                 }
+                _view.dispose();
+                new GameController(new GameView(), _model);
             } catch (Exception e) {}
         }
     }

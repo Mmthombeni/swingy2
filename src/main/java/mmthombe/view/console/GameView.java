@@ -2,6 +2,9 @@ package mmthombe.view.console;
 
 import java.util.Random;
 
+import mmthombe.enums.Artifacts;
+import mmthombe.messages.Messages;
+import mmthombe.model.Villain;
 import mmthombe.utils.*;
 
 public class GameView{
@@ -14,8 +17,8 @@ public class GameView{
         return SwingyIO.ConsoleInput().trim();
     }
 
-    public int heroColliedVillian(){
-        SwingyIO.ConsoleOutputLine("You have encounted a villain, would you like to fight or run?");
+    public int heroColliedVillian(Villain villain){
+        SwingyIO.ConsoleOutputLine("You have encounted a villain named " + villain.getName() + " with the following: " + villain.getAttack() + " attack, would you like to fight or run?");
         SwingyIO.ConsoleOutputLine("1. Run");
         SwingyIO.ConsoleOutputLine("2. Fight");
 
@@ -25,7 +28,7 @@ public class GameView{
         }
         else{
             SwingyIO.ConsoleOutputLine("Invalid input please select 1 or 2");
-            return heroColliedVillian();
+            return heroColliedVillian(villain);
         }
     }
 
@@ -33,8 +36,8 @@ public class GameView{
         return (new Random().nextBoolean());  
     }
 
-    public int takeArtifact(){
-        SwingyIO.ConsoleOutputLine("villian droped the following artifact, would you like to take it");
+    public int takeArtifact(Artifacts artifact){
+        SwingyIO.ConsoleOutputLine(Messages.ArtifactMsg(artifact.toString()));
         SwingyIO.ConsoleOutputLine("1. Take artifact");
         SwingyIO.ConsoleOutputLine("2. Leave artifact");
 
@@ -44,7 +47,7 @@ public class GameView{
         }
         else{
             SwingyIO.ConsoleOutputLine("Invalid input please select 1 or 2");
-            return takeArtifact();
+            return takeArtifact(artifact);
         }
     }
 }

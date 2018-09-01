@@ -35,6 +35,6 @@ public class SwingyIO {
     }
 
     public static boolean GUIConfirm(String message){
-        return (JOptionPane.showConfirmDialog(null, message) == 0);
+        return (JOptionPane.showConfirmDialog(null, message, "Confirm...?", JOptionPane.YES_NO_OPTION) == 0);
     }
 }

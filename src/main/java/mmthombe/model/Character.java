@@ -1,14 +1,29 @@
 package mmthombe.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import mmthombe.enums.Artifacts;
 import mmthombe.utils.Formulas;
 
+
 public class Character {
-    private String _name;
-    private int _xp;
-    private int _attack;
-    private int _defence;
+	@NotNull
+	private String _name;
+	
+	@Min(0)
+	private int _xp;
+	
+	@Min(0)
+	private int _attack;
+	
+	@Min(0)
+	private int _defence;
+	
+	@NotNull
 	private Artifacts _artifact;
+	
+	@Min(0)
 	private int _hp;
 	private Coordinates _coordinates;
 

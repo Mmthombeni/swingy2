@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import mmthombe.enums.Artifacts;
 import mmthombe.model.Character;
 import mmthombe.model.Coordinates;
 import mmthombe.model.Villain;
+import mmthombe.model.CreateHeroModel;
 
 public class VillainFactory{
     private static int id;
     private static Random random = new Random();
 
     private static Villain newVillain(Character hero){
-        int attack = ((hero.getAttack()/2) + random.nextInt(hero.getAttack()));
-        int defense = ((hero.getDefense()/2) + random.nextInt(hero.getDefense()));
-        int hp = ((hero.getHP()/2) + random.nextInt(hero.getHP()));
+        int attack = ((hero.getAttack()/3) + random.nextInt(hero.getAttack()));
+        int defense = ((hero.getDefense()/3) + random.nextInt(hero.getDefense()));
+        int hp = ((hero.getHP()/3) + random.nextInt(hero.getHP()));
 
-        return new Villain("Kaygo" + (++id), 0, attack, defense, hp, Artifacts.ARMOR);
+        return new Villain("Kaygo" + (++id), 0, attack, defense, hp, CreateHeroModel.getRandomArtifact());
     }
 
     public static List<Villain> villainList(Character hero, int map_size){

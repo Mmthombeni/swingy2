@@ -33,8 +33,8 @@ public class SelectHeroController{
                 SwingyIO.GUIOutput("Please Select a hero");
             }
             else{
+                _view.dispose();
                 new GameController(new GameView(), new GameModel(hero));
-                SwingyIO.ConsoleOutputLine("Start game");
             }
         }
     }
@@ -42,8 +42,8 @@ public class SelectHeroController{
     class CreateBtnListner implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
-            new CreateHeroController(new CreateHeroModel(), new CreateHeroView());
             _view.dispose();
+            new CreateHeroController(new CreateHeroModel(), new CreateHeroView());
         }
     }
 }

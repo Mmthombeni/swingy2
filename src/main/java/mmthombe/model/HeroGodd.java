@@ -9,7 +9,38 @@ public class HeroGodd extends Character implements ICharacter{
         super(name, xp, attack, defence, hp, artifacts);
     }
 
-    public int getArtifacts(){
-      return 0;  
+    @Override
+    public int getAttack() {
+        int boost = 0;
+
+        if (this.getArtifact() == Artifacts.WEAPON){
+            boost = 10;
+        }
+        return super.getAttack() + boost;
     }
+
+    @Override
+    public int getDefense(){
+        int boost = 0;
+
+        if (this.getArtifact() == Artifacts.ARMOR){
+            boost = 5;
+        }
+        return super.getDefense() + boost;
+    }
+
+    @Override
+    public int getHP() {
+        int boost = 0;
+
+        if (this.getArtifact() == Artifacts.HELM){
+            boost = 60;
+        }
+        return super.getHP() + boost;
+    }
+
+	public int getArtifacts() {
+		return 0;
+	}
+
 }

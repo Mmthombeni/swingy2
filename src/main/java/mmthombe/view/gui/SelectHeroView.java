@@ -11,7 +11,7 @@ public class SelectHeroView extends JFrame{
 
     public SelectHeroView(String[] heroSelection){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 300);
+        this.setSize(300, 200);
         this.setTitle("Select a hero");
 
         heroList = new JList<String>(heroSelection);

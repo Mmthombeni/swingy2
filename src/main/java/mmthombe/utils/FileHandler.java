@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.List;
 
-import mmthombe.enums.Artifacts;
 import mmthombe.factories.HeroFactory;
 import mmthombe.model.Character;
 
